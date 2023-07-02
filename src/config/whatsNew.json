@@ -1,6 +1,14 @@
 {
   "features": [
     {
+      "version": "6.5.0-dn",
+      "title": "Analytics Platform added"
+    },
+    {
+      "version": "6.5.0-dn",
+      "title": "Award Reset Option added"
+    },
+    {
       "version": "6.4.1-dn",
       "title": "Tracker Library Added"
     },
