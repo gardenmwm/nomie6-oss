@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [
+  content: [
     './**/*.svelte', // Look for .svelte files
     './**/*.html', // Look for .html files
   ],
@@ -51,5 +51,5 @@ module.exports = {
     backgroundColor: ['hover', 'responsive', 'focus', 'dark'],
     textColor: ['hover', 'responsive', 'focus', 'dark'],
   },
-  plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/typography')],
+  plugins: [ require('@tailwindcss/typography')],
 }
