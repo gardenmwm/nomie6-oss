@@ -50,7 +50,7 @@ export default defineConfig({
       maximumFileSizeToCacheInBytes: 1000 * 1000 * 4
     }),
   ],
-  define: {
-    APP_VERSION: JSON.stringify(process.env.npm_package_version),
+  define:  {
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version)
   },
 })
