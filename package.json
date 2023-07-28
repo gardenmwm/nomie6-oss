@@ -119,7 +119,7 @@
     "expr-eval": "^2.0.2",
     "js-file-download": "^0.4.12",
     "latlon-geohash": "^2.0.0",
-    "leaflet": "^1.5.1",
+    "leaflet": "^1.9.4",
     "localforage": "^1.7.3",
     "lodash": "^4.17.21",
     "math-expression-evaluator": "^1.3.13",
