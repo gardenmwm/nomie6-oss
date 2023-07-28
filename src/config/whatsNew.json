@@ -1,6 +1,10 @@
 {
   "features": [
     {
+      "version": "6.5.2dev-dn",
+      "title": "All dependencies updated"
+    },
+    {
       "version": "6.5.0-dn",
       "title": "Analytics Platform added"
     },
