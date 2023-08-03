@@ -95,7 +95,7 @@ export const PluginStore = createArrayStore(NPaths.storage.plugins(), {
   itemInitializer: (item: PluginType) => {
     return new PluginClass(item)
   },
-  itemSerializer: (item: Location) => {
+  itemSerializer: (item: PluginType) => {
     return JSON.parse(JSON.stringify(item))
   },
 })

@@ -51,6 +51,7 @@
 
   $: {
     state.locations = $LocationStore
+    //console.log('state.locations: ',state.locations)
   }
 
   let lastLocation = null
@@ -85,12 +86,13 @@
   let saving = false
 
   function sorted(evt): void {
+
     clearTimeout(sortedTimeout)
     if (state.mode == 'edit') {
       saving = true
       let locations = evt.detail
       sortedTimeout = setTimeout(() => {
-        LocationStore.updateSync((state) => {
+       LocationStore.updateSync((state) => {
           return locations
         }).then(() => {
           saving = false
@@ -132,7 +134,7 @@
       let rawLoc: any = await locate()
       if (rawLoc) {
         let location = new Location({
-          lat: rawLoc.latitude,
+         lat: rawLoc.latitude,
           lng: rawLoc.longitude,
           name: rawLoc.location,
         })
@@ -165,6 +167,7 @@
   }
 
   async function favorite(item?: Location) {
+    ready = false;
     let loc
     if (item || mapLocation) {
       loc = item || mapLocation
@@ -187,6 +190,7 @@
        
       }
     }
+    ready = true;
   }
 
   const search = async (term: string) => {
@@ -213,7 +217,10 @@
     if (location && !item.saved) {
       await favorite(location)
     }
-    select(location)
+    if (state.mode == 'view') {
+                          select(location)
+                        }
+    //select(location)
     resultsHidden = true
   }
 </script>
@@ -309,7 +316,7 @@
                   favorite(mapLocation)
                 }}
               >
-                Save Location <strong>{math.round(mapLocation.lat, 10000)},{math.round(mapLocation.lng, 10000)}</strong>
+                Save as Favorite: <strong>{math.round(mapLocation.lat, 10000)},{math.round(mapLocation.lng, 10000)}</strong>
               </NItem>
               
             </List>

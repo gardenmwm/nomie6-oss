@@ -164,6 +164,7 @@
   }
 
   async function favorite(item?: Location) {
+    ready = false
     let loc
     if (item || mapLocation) {
       loc = item || mapLocation
@@ -182,6 +183,7 @@
         await LocationStore.upsert(loc)
       }
     }
+    ready = true
   }
 
   const search = async (term: string) => {
