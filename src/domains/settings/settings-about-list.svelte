@@ -88,7 +88,6 @@
     <span slot="right">{$Device.pwa}</span>
   </ListItem>
 
-  <ListItem bottomLine={16} title="UI Test" to="/test" detail />
   <ListItem><span class="text-gray-500 text-sm">Counts</span></ListItem>
   <ListItem bottomLine={16} title="Trackers">
     <div slot="right">{counts.trackers}</div>
