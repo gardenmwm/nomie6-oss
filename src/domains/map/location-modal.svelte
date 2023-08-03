@@ -46,7 +46,7 @@
     locating: false,
   }
 
-  // $: state.locations = $LocationStore
+  // $: state.locations = $LocationStore 
 
   $: {
     state.locations = $LocationStore
