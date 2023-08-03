@@ -34,6 +34,7 @@
   import { closeModal } from '../../components/backdrop/BackdropStore2'
   import BackdropModal from '../../components/backdrop/backdrop-modal.svelte'
   import Empty from '../../components/empty/empty.svelte'
+  import { showToast } from '../../components/toast/ToastStore'
 
   export let id: string
   export let onSelect: Function
@@ -179,7 +180,11 @@
         loc.name = name
       }
       if(loc.name) {
+        Interact.blocker(`Saving ${loc.name} location..`)
         await LocationStore.upsert(loc)
+        Interact.stopBlocker()
+        showToast({ message: 'Location Saved' })
+       
       }
     }
   }
@@ -310,23 +315,7 @@
             </List>
           {/if}
           <List solo className="mb-2">
-            <NItem
-              clickable
-              className="clickable py-1 dark:bg-gray-900 bg-white text-primary {state.locating ? 'opacity-50' : ''}"
-              on:click={() => {
-                currentLocation()
-              }}
-            >
-              {#if !state.locating}
-                {Lang.t('location.use-current-location', 'Use Current Location')}...
-              {:else}{Lang.t('location.locating', 'Locating...')}{/if}
-              <div slot="right">
-                {#if state.locating}
-                  <Spinner size={24} />
-                {/if}
-              </div>
-            </NItem>
-            <Divider center />
+            
             <NItem
               clickable
               on:click={() => {
