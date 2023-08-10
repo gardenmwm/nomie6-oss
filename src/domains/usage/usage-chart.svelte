@@ -193,17 +193,18 @@
     let date = new Date()
     let contextItems: Array<TrackableUsage> = []
     let contextMap: Array<ContextTrackableUsage> = []
-    //start = dayjs(date).subtract(30, 'day').toDate()
+    //start = dayjs(date).subtract(90, 'day').toDate()
     //end = dayjs(date).add(30, 'day').toDate()
     start = dayjs(usages[0].dates[0]).toDate()
     end = dayjs(usages[0].dates[usages[0].dates.length-1]).toDate()
+    
 
 
     const trackables = $TrackableStore.trackables
     const frameStart = dayjs(start)
     const frameEnd = dayjs(end)
 
-    const res: any = await getContextOn(date, trackables)
+    const res: any = await getContextOn(date, trackables,start,end)
 
     contextItems = res
       ? Object.keys(res).map((id: string) => {
