@@ -38,6 +38,7 @@
   export let usage: TrackableUsage
   export let className: string = ''
 
+  
   const dateFormats = getDateFormats()
 
   let usageByDay: TrackableUsage
@@ -59,9 +60,8 @@
     let chartUsage = new TrackableUsage({ ...usage, ...{ trackable } })
     usageByDay = chartUsage.byDay
     if ($Stats2Store.time === '1y') {
-      chartUsage = chartUsage.groupBy('month', 'YYYY-MM-W')
-    // } else if ($Stats2Store.time === '6m') {
-      // chartUsage = chartUsage.groupBy('day', 'YYYY-MM-W')
+      chartUsage = chartUsage.groupBy('month', 'MMM YYYY')
+     
     } else {
       chartUsage = chartUsage.byDay
     }
