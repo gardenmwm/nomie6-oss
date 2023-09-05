@@ -194,7 +194,7 @@ export const PouchDBEngine: IStorage = {
       doc = await this.db.get(path)
     } catch (e) { 
       console.log("getFullDoc error found: ",e)
-      if (e.toString().includes("Failed to execute 'transaction' on 'IDBDatabase'"))
+     if (e.toString().includes("Failed to execute 'transaction' on 'IDBDatabase'"))
         {console.log("Reload DB action triggered",e)
           this.db = new PouchDB(dbKey, {
           auto_compaction: true,
@@ -202,6 +202,7 @@ export const PouchDBEngine: IStorage = {
           })
          window.location.href = window.location.href
         }
+
     }
     return doc
   },

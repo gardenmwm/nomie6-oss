@@ -60,6 +60,7 @@
   import ChevronUpOutline from '../../n-icons/ChevronUpOutline.svelte';
 
   import ChevronDownOutline from '../../n-icons/ChevronDownOutline.svelte'
+  import { openLocationModal } from '../locations/LocationStore'
 
   export const location = undefined
   export const style = undefined
@@ -210,6 +211,12 @@
               {#if showplugins}
               <PluginsMoreMenu />
               {/if}
+            </List>
+
+            <List solo className="mt-4">
+              <ListItem detail bottomLine={16} on:click={() => openLocationModal()} title="Locations">
+                <span slot="left">📍</span>
+              </ListItem>
             </List>
 
             <List solo className="mt-4">

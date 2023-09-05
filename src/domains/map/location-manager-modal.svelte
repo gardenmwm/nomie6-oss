@@ -1,7 +1,7 @@
 <script lang="ts">
   import ToolbarGrid from '../../components/toolbar/toolbar-grid.svelte'
 
-  import NMap from '../../domains/map/map.svelte'
+  import NMap from './map.svelte'
 
   import NItem from '../../components/list-item/list-item.svelte'
 
@@ -34,6 +34,7 @@
   import { closeModal } from '../../components/backdrop/BackdropStore2'
   import BackdropModal from '../../components/backdrop/backdrop-modal.svelte'
   import Empty from '../../components/empty/empty.svelte'
+  import { showToast } from '../../components/toast/ToastStore'
 
   export let id: string
   export let onSelect: Function
@@ -41,7 +42,7 @@
   const state = {
     locations: [],
     active: null,
-    mode: 'view',
+    mode: 'edit',
     mapLocation: null,
     locating: false,
   }
@@ -50,6 +51,7 @@
 
   $: {
     state.locations = $LocationStore
+    //console.log('state.locations: ',state.locations)
   }
 
   let lastLocation = null
@@ -84,12 +86,13 @@
   let saving = false
 
   function sorted(evt): void {
+
     clearTimeout(sortedTimeout)
     if (state.mode == 'edit') {
       saving = true
       let locations = evt.detail
       sortedTimeout = setTimeout(() => {
-        LocationStore.updateSync((state) => {
+       LocationStore.updateSync((state) => {
           return locations
         }).then(() => {
           saving = false
@@ -131,7 +134,7 @@
       let rawLoc: any = await locate()
       if (rawLoc) {
         let location = new Location({
-          lat: rawLoc.latitude,
+         lat: rawLoc.latitude,
           lng: rawLoc.longitude,
           name: rawLoc.location,
         })
@@ -164,7 +167,7 @@
   }
 
   async function favorite(item?: Location) {
-    ready = false
+    ready = false;
     let loc
     if (item || mapLocation) {
       loc = item || mapLocation
@@ -180,10 +183,14 @@
         loc.name = name
       }
       if(loc.name) {
+        Interact.blocker(`Saving ${loc.name} location..`)
         await LocationStore.upsert(loc)
+        Interact.stopBlocker()
+        showToast({ message: 'Location Saved' })
+       
       }
     }
-    ready = true
+    ready = true;
   }
 
   const search = async (term: string) => {
@@ -210,7 +217,10 @@
     if (location && !item.saved) {
       await favorite(location)
     }
-    select(location)
+    if (state.mode == 'view') {
+                          select(location)
+                        }
+    //select(location)
     resultsHidden = true
   }
 </script>
@@ -226,7 +236,7 @@
           {state.active.name}
         {:else if state.mapLocation}
           {state.mapLocation.lat},{state.mapLocation.lng}
-        {:else}{Lang.t('location.pick-a-location', 'Pick a Location')}{/if}
+        {:else}Locations{/if}
       </h1>
       <div slot="right">
         {#if state.mode == 'edit'}
@@ -237,23 +247,12 @@
               clear
               primary
               type="clear"
-              on:click={() => {
-                setViewMode('view')
-              }}
+              
             >
-              Done
+              .
             </Button>
           {/if}
-        {:else if state.locations.length}
-          <Button
-            clear
-            primary
-            on:click={() => {
-              setViewMode('edit')
-            }}
-          >
-            {Lang.t('general.edit', 'Edit')}
-          </Button>
+        
         {/if}
       </div>
     </ToolbarGrid>
@@ -317,38 +316,13 @@
                   favorite(mapLocation)
                 }}
               >
-                Favorite <strong>{math.round(mapLocation.lat, 10000)},{math.round(mapLocation.lng, 10000)}</strong>
+                Save as Favorite: <strong>{math.round(mapLocation.lat, 10000)},{math.round(mapLocation.lng, 10000)}</strong>
               </NItem>
-              <NItem
-                clickable
-                aria-label="Use this area"
-                on:click={() => {
-                  
-                  select(mapLocation)
-                }}
-              >
-                Select <strong>{math.round(mapLocation.lat, 10000)},{math.round(mapLocation.lng, 10000)}</strong>
-              </NItem>
+              
             </List>
           {/if}
           <List solo className="mb-2">
-            <NItem
-              clickable
-              className="clickable py-1 dark:bg-gray-900 bg-white text-primary {state.locating ? 'opacity-50' : ''}"
-              on:click={() => {
-                currentLocation()
-              }}
-            >
-              {#if !state.locating}
-                {Lang.t('location.use-current-location', 'Use Current Location')}...
-              {:else}{Lang.t('location.locating', 'Locating...')}{/if}
-              <div slot="right">
-                {#if state.locating}
-                  <Spinner size={24} />
-                {/if}
-              </div>
-            </NItem>
-            <Divider center />
+            
             <NItem
               clickable
               on:click={() => {
