@@ -68,7 +68,7 @@ import appConfig from '../../config/appConfig';
     {/if}
     <section class="xl:ml-56 layout-section-wrap">
       {#if hasHeader}
-        <header class=" z-50 sticky top-0  glass {headerClassNames}">
+        <header class=" non-printable z-50 sticky top-0  glass {headerClassNames}">
           <BackupMessage />
           <slot name="header" />
         </header>
@@ -82,18 +82,20 @@ import appConfig from '../../config/appConfig';
       </main>
     </section>
     {#if $Device.width > 899}
+    <div class="non-printable">
       <DesktopSidebar loggedIn={showTabs} />
+    </div>
     {/if}
   </div>
   {#if hasBottom}
-    <main id="nomie-main-bottom" class="glass xl:ml-56">
+    <main id="nomie-main-bottom" class="glass xl:ml-56 non-printable">
       <slot name="bottom" />
     </main>
   {/if}
   <!-- <div id="footer-buffer" class="sticky bottom-0" bind:this={footerBuffer} /> -->
   <footer
     bind:this={footerEle}
-    class="xl:ml-56  sticky self-justify-start left-0 right-0 bottom-0 z-50 border-t border-gray-300 layout-footer glass dark:border-gray-400 dark:border-opacity-20"
+    class="non-printable xl:ml-56  sticky self-justify-start left-0 right-0 bottom-0 z-50 border-t border-gray-300 layout-footer glass dark:border-gray-400 dark:border-opacity-20"
   >
     <slot name="footer" />
 
@@ -109,3 +111,9 @@ import appConfig from '../../config/appConfig';
     {/if}
   </footer>
 </div>
+
+<style>
+  @media print {
+      .non-printable { display: none; }
+  }
+</style>

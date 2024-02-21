@@ -16,6 +16,8 @@
   import CubeOutline from '../../n-icons/CubeOutline.svelte'
   import CubeSolid from '../../n-icons/CubeSolid.svelte'
 
+  import QRCode from '../../n-icons/QRCode.svelte'
+  import QRCodeSolid from '../../n-icons/QRCodeSolid.svelte'
   import EaselSolid from '../../n-icons/EaselSolid.svelte'
   import RibbonSolid from '../../n-icons/RibbonSolid.svelte'
   import CalendarSolid from '../../n-icons/CalendarSolid.svelte'
@@ -103,6 +105,13 @@
       icon: CubeOutline,
       activeIcon: CubeSolid,
     },
+    {
+      id: 'afternomie',
+      path: '/afternomie',
+      title: Lang.t('tabs.afternomie', 'AfterNomie'),
+      icon: QRCode,
+      activeIcon: QRCodeSolid,
+    },
     // {
     //   id: 'awards',
     //   path: '/awards',
@@ -121,7 +130,7 @@
 </script>
 
 <aside
-  class="desktop-sidebar bg-white dark:bg-gray-900 px-4 shadow-xl z-50"
+  class="desktop-sidebar bg-white dark:bg-gray-900 px-4 shadow-xl z-50 not-printable"
   role="menu"
   aria-hidden="false"
   title="Nomie Navigation"
@@ -196,6 +205,9 @@
 </aside>
 
 <style lang="postcss" global>
+  @media print {
+      .not-printable { display: none; }
+  }
   .desktop-sidebar .nav-item {
     @apply px-4 py-2;
     @apply mb-2;
