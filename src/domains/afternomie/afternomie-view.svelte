@@ -365,7 +365,7 @@ function startNew(){
       <Divider left={16} />
       <Input
         type="textarea"
-        rows=4
+        rows={4}
         bind:value={message}
         listItem
         label="Message (between 100 and 1000 characters)"
