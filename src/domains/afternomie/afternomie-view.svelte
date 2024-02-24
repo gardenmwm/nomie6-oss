@@ -27,18 +27,18 @@
     var stored = false;
     var enckey = "Dummy"
     var txt = ""
-    var domain = "https://afternomie.casadelange.nl";
+    var domain = "https://www.afternomie.com";
 
    
 
     //message variables
-    var subject = "Testing12345 "
+    var subject = ""
     var subject_valid = false;
     var subject_style = "background-color:rgba(255, 0, 0, 0.05)";
-    var message = "Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 Testing12345 ";
+    var message = "";
     var message_valid = false;
     var message_style = "background-color:rgba(255, 0, 0, 0.05)";
-    var primaryemail = "ron@mail.com"
+    var primaryemail = ""
     var primary_valid = false;
     var primary_style = "background-color:rgba(255, 0, 0, 0.05)";
     var secondaryemail = ""
@@ -172,12 +172,12 @@
     }
 
     function changeDate(){
+      //placeholder
     }
 
     async function encryptobject(){
     if (stored == false) {
     var uniqueid = key(15);
-    //// INCLUDE NOMIE FOR TEST
     
     var data = {
       "subject":subject,
@@ -239,7 +239,6 @@
   function printscreen() {
     lockwidth = true;
     qrwidth = 500;
-    //viewprint = false;
     refreshqr = true;
     setTimeout(function() {
       refreshqr = false
@@ -597,5 +596,3 @@ function startNew(){
       {/if}
   
   
-
-
