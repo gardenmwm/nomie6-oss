@@ -14,6 +14,7 @@
   import Timeline from './Timeline.svelte'
   import Goals from './Goals.svelte'
   import Analytics from './Analytics.svelte'
+  import AfterNomie from './AfterNomie.svelte'
   import Tests from './tests/tests.svelte'
   import Uoms from './Uoms.svelte'
   import Awards from './Awards.svelte'
@@ -51,7 +52,9 @@
   <Route path="/analytics">
     <Analytics />
   </Route>
-
+  <Route path="/afternomie">
+    <AfterNomie />
+  </Route>
   <Route path="/timeline">
     <Timeline />
   </Route>

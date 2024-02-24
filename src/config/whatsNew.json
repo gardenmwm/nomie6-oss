@@ -1,6 +1,9 @@
 {
   "features": [
     {
+      "version": "6.7.0-dn",
+      "title": "AfterNomie integration introduced"
+    },{
       "version": "6.6.0-dn",
       "title": "Context in Dashboard Charts Introduced"
     },
