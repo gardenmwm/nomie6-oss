@@ -2,6 +2,10 @@ name: Create and publish a Docker image
 
 on:
   push:
+    branches: ["main","dev"]
+
+  # Allows this workflow to be run manually from the Actions tab
+  workflow_dispatch:  
 
 env:
   REGISTRY: ghcr.io
