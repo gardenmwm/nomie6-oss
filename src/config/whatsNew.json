@@ -246,6 +246,10 @@
   ],
   "fixes": [
     {
+      "version": "6.7.0-dn",
+      "title": "Fixed dashboard printing"
+    },
+    {
       "version": "6.6.0-dn",
       "title": "Location config fix"
     },
