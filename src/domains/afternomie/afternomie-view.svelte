@@ -246,7 +246,17 @@
    }, 1)
 
   setTimeout(function() {
-   window.print() 
+   //temp
+   try {
+  if(!document.execCommand('print', false, null)) {
+    window.print()
+  }
+} catch {
+  window.print()
+}
+   //tempend
+   
+    //window.print() 
 }, 100)
 
 setTimeout(function() {
