@@ -47,6 +47,7 @@
   import TrashOutline from '../../n-icons/TrashOutline.svelte'
   import PencilOutline from '../../n-icons/PencilOutline.svelte'
   import ShareOutline from '../../n-icons/ShareOutline.svelte'
+  import PrintOutline from '../../n-icons/PrintOutline.svelte'
   import UpgradeMessage from '../../components/upgrade-message/upgrade-message.svelte'
 
   $: if (Object.keys($TrackableStore.trackables)) {
@@ -155,6 +156,20 @@
       Interact.error(e.message)
     }
   }
+
+  function printDashboard() {
+    setTimeout(function() {
+  
+   try {
+  if(!document.execCommand('print', false, null)) {
+    window.print()
+  }
+} catch {
+  window.print()
+}
+}, 100)
+
+ }
 </script>
 
 <Layout className="h-full">
@@ -198,6 +213,7 @@
     </Container>
     <hr class="mt-4 mb-6 border-gray-500 dark:border-opacity-20 dark:border-gray-200 border-opacity-20" />
     <Container size="md">
+      <div class="non-printable">
       <ListItem clickable on:click={() => createNewWidget()} bottomLine={24}>
         <IonIcon icon={AddCircleOutline} slot="left" />
         <span class="">Add Widget</span></ListItem
@@ -214,6 +230,16 @@
           <IonIcon icon={ShareOutline} slot="left" />
           Share Dashboard View</ListItem
         >
+        <ListItem
+        clickable
+        on:click={async () => {
+          await printDashboard()
+        }}
+        bottomLine={24}
+      >
+        <IonIcon icon={PrintOutline} slot="left" />
+        Print Dashboard View</ListItem
+      >
         <ListItem
           bottomLine={24}
           clickable
@@ -234,6 +260,7 @@
         <IonIcon icon={TrashOutline} slot="left" />
         <span class="text-danger">Delete Dashboard</span></ListItem
       >
+    </div>
     </Container>
   {:else}
     <Empty
@@ -247,3 +274,9 @@
   {/if}
   <div class="h-40" />
 </Layout>
+
+<style>
+  @media print {
+      .non-printable { display: none; }
+  }
+</style>
