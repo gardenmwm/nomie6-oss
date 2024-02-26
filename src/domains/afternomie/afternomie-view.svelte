@@ -269,8 +269,6 @@ function startNew(){
   
      retrycreateqr = false
      refreshqr = false
-     qrwidth = 0;
-      innerWidth = 0;
      lockwidth = false;
      stored = false;
      enckey = "Dummy"
