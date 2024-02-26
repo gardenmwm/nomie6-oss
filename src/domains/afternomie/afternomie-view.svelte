@@ -27,7 +27,7 @@
     var stored = false;
     var enckey = "Dummy"
     var txt = ""
-    var domain = "https://www.afternomie.com";
+    var domain = "www.afternomie.com";
 
    
 
