@@ -224,7 +224,7 @@
 	var lastrequest = new Date().getTime();
 	var lastvalidated = new Date().getTime();
   try {
-	const response = await fetch("http://"+domain+'/start/addLog', {
+	const response = await fetch("https://"+domain+'/start/addLog', {
 			method: 'POST',
 			body: JSON.stringify({ "uniqueid":uniqueid,"lastrequest":lastrequest,"lastreset":lastvalidated }),
 			headers: {
