@@ -226,7 +226,7 @@
   try {
 	const response = await fetch("https://"+domain+'/start/addLog', {
 			method: 'POST',
-			body: JSON.stringify({ "uniqueid":uniqueid,"lastrequest":lastrequest,"lastreset":lastvalidated }),
+			body: JSON.stringify({ "uniqueid":uniqueid,"lastrequest":lastrequest,"lastreset":lastvalidated,"expiredate":new Date(expirationdate).getTime(),"expires":expiration }),
 			headers: {
 				'content-type': 'application/json'
 			}
@@ -235,6 +235,7 @@
    }
    catch {return {ok:false}}
   }
+
 
   function printscreen() {
     lockwidth = true;
