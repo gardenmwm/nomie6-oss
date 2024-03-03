@@ -352,7 +352,7 @@ function startNew(){
                 DailyNomie & Sync Service it will enable you to reveal your Nomie tracking history in conjunction with your note.
                 </div>
               <div class="my-0 text-center text-xs font-normal leading-tight text-gray-800 dark:text-gray-50">
-                More information can be found at <a class="text-blue-800" target="_blank" href="https://www.dailynomie.com/?search=afternomie">DailyNomie-AfterNomie</a>
+                More information can be found at <a class="text-blue-800" target="_blank" href="https://www.dailynomie.com/?s=afternomie">DailyNomie-AfterNomie</a>
                 </div>
                 <Button  className="mt-2" clear primary on:click={()=>GoToStep("step2")}>Create Message →</Button>
         </Empty>
