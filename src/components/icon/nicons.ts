@@ -62,6 +62,8 @@ import PeopleOutlineIcon from '../../n-icons/PeopleOutline.svelte'
 import PersonAddOutlineIcon from '../../n-icons/PersonAddOutline.svelte'
 import PieChartOutlineIcon from '../../n-icons/PieChartOutline.svelte'
 import PulseOutlineIcon from '../../n-icons/PulseOutline.svelte'
+import QRIcon from '../../n-icons/QRCode.svelte'
+import QRFilledIcon from '../../n-icons/QRCodeSolid.svelte'
 import RemoveCircleOutlineIcon from '../../n-icons/RemoveCircleOutline.svelte'
 import ReplyOutlineIcon from '../../n-icons/ReplyOutline.svelte'
 import RibbonOutlineIcon from '../../n-icons/RibbonOutline.svelte'
@@ -125,6 +127,10 @@ export const PeopleCircle = PeopleCircleIcon
 export const PersonAddOutline = PersonAddOutlineIcon
 
 export const People = PeopleIcon
+
+export const QRCode = QRIcon
+
+export const QRCodeSolid = QRFilledIcon
 
 export const CopyOutline = CopyOutlineIcon
 
