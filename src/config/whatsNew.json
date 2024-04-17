@@ -246,6 +246,9 @@
   ],
   "fixes": [
     {
+      "version": "6.7.1-dn",
+      "title": "Fixed dashboard value widget coloring"
+    },{
       "version": "6.7.0-dn",
       "title": "Fixed dashboard printing"
     },
