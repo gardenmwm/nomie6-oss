@@ -84,15 +84,15 @@
   function getClass(widget: WidgetClass): string {
     let classes = [`type-${widget.type}`]
     let value
-    if (widget.stats) {
+    if (usage) {
       if (widget.type == 'last-used') {
-        value = widget.stats.daysPast
+        value = new Date().getTime() - usage.lastDate.getTime()
       } else {
-        value = widget.math !== 'sum' ? widget.stats.avg : widget.stats.sum
+        value = usage.displayValue;
       }
     }
     value = value || 0
-
+    
     if (widget.compareValue) {
       if (value > widget.compareValue) {
         classes.push(`over widget-${widget.compareOverColor}`)
