@@ -82,7 +82,6 @@
    * @param widget
    */
   function getClass(widget: WidgetClass): string {
-    console.log('usage',usage)
     let classes = [`type-${widget.type}`]
     let value
     if (usage) {
